@@ -55,7 +55,7 @@ public class WortEintrag {
      * @throws IllegalArgumentException
      */
     public void setWort(String wort) throws IllegalArgumentException{
-        if(checkWort(wort) == true) {
+        if(checkWort(wort)) {
             this.wort = wort;
         }
         else {
@@ -97,7 +97,7 @@ public class WortEintrag {
      * @param url
      */
     public void setUrl(String url) {
-        if(WortEintrag.checkURL(url) == true) {
+        if(WortEintrag.checkURL(url)) {
             this.url = url;
 
         }
