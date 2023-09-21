@@ -1,8 +1,11 @@
 package model;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class WortEintrag {
     private String wort;
-
+    private static final String URL_REGEX = "^(https?|ftp|file)://[-A-Za-z0-9+&@#/%?=~_|!:,.;]*[-A-Za-z0-9+&@#/%=~_|]";
     private String url;
     /**
      * Initialisiert die Attribute
@@ -19,29 +22,12 @@ public class WortEintrag {
      * @return wenn Anforderungen enstpricht true
      */
     public static boolean checkURL(String url) {
-        boolean sucess = false;
-        int hs = 8;
-        int h = 7;
-        if(url.substring(0, hs).equals("https://")) {
-            if(url.charAt(hs) >= 'a' && url.charAt(hs) <= 'z' || url.charAt(hs) >= 'A' && url.charAt(hs) <= 'Z') {
-                if(url.charAt(hs+1) == '.') {
-                    if(url.charAt(hs+2) >= 'a' && url.charAt(hs+2) <= 'z' || url.charAt(hs+2) >= 'A' && url.charAt(hs+2) <= 'Z') {
-                        sucess = true;
-                    }
-                }
-            }
-        }
-        else if (url.substring(0, h).equals("http://")) {
-            if(url.charAt(h) >= 'a' && url.charAt(h) <= 'z' || url.charAt(h) >= 'A' && url.charAt(h) <= 'Z') {
-                if(url.charAt(h+1) == '.') {
-                    if(url.charAt(h+2) >= 'a' && url.charAt(h+2) <= 'z' || url.charAt(h+2) >= 'A' && url.charAt(h+2) <= 'Z') {
-                        sucess = true;
-                    }
-                }
-            }
-        }
-        return sucess;
+        Pattern pattern = Pattern.compile(URL_REGEX);
+        Matcher matcher = pattern.matcher(url);
+        return matcher.matches();
     }
+
+
     /**
      * gibt wort zurück
      * @return

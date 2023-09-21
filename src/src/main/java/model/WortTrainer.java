@@ -8,9 +8,7 @@ public class WortTrainer {
     private List<WortEintrag> liste;
     private int trueGuess;
     private int falseGuess;
-
     private WortEintrag aktPaar;
-
     public WortTrainer() {
         this.liste = new ArrayList<WortEintrag>();
         this.aktPaar = null;
@@ -28,6 +26,11 @@ public class WortTrainer {
         this.aktPaar = null;
         this.trueGuess = 0;
         this.falseGuess = 0;
+    }
+    public WortEintrag getAktPaar(){
+        if(this.aktPaar != null)
+            return this.aktPaar;
+       throw new IllegalArgumentException("Kein Paar ausgewählt");
     }
 
     /**
