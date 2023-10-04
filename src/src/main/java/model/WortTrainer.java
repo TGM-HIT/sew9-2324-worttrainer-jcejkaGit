@@ -55,12 +55,15 @@ public class WortTrainer {
         Random gen = new Random();
         int show = gen.nextInt(liste.size());
         this.aktPaar = liste.get(show);
-        return this.aktPaar;
+        return getAktPaar();
     }
 
     public WortEintrag chooseWorteintrag(int index) {
-        this.aktPaar = liste.get(index);
-        return this.aktPaar;
+        if(liste!=null){
+            this.aktPaar = liste.get(index);
+        }
+
+        return getAktPaar();
     }
 
     /**
@@ -71,7 +74,7 @@ public class WortTrainer {
      */
     public boolean check(String wort) {
         boolean sucess = false;
-        if (this.aktPaar.getWort().equals(wort)) {
+        if (getAktPaar().getWort().equals(wort)) {
             sucess = true;
             //zählt jedes mal mit wenn ein kind das richtige Wort errät
         }
@@ -88,7 +91,7 @@ public class WortTrainer {
      */
     public boolean checkIgnoreCase(String wort) {
         boolean sucess = false;
-        String gWort1 = this.aktPaar.getWort().toUpperCase();
+        String gWort1 = getAktPaar().getWort().toUpperCase();
         String gWort2 = wort.toUpperCase();
 
         if (gWort1.equals(gWort2)) {

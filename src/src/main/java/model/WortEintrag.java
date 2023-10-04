@@ -2,10 +2,13 @@ package model;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class WortEintrag {
+    @JsonProperty("wort")
     private String wort;
     private static final String URL_REGEX = "^(https?|ftp|file)://[-A-Za-z0-9+&@#/%?=~_|!:,.;]*[-A-Za-z0-9+&@#/%=~_|]";
+    @JsonProperty("url")
     private String url;
     /**
      * Initialisiert die Attribute

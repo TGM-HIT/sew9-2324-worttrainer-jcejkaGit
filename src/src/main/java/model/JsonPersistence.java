@@ -19,14 +19,17 @@ import java.io.IOException;
     }
         public WortTrainer load(String filePath) {
             ObjectMapper objectMapper = new ObjectMapper();
-            try {
-                System.out.println("Data loaded from JSON file: " + filePath);
-                return objectMapper.readValue(new File(filePath), WortTrainer.class);
+            File file = new File(filePath);
 
-            } catch (IOException e) {
-                e.printStackTrace();
-                System.err.println("Error loading data from JSON file: " + filePath);
-                return null; // Handle the error or return a default WordTrainer
+            if (file.exists()) {
+                try {
+                    return objectMapper.readValue(file, WortTrainer.class);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    System.err.println("Error loading data from JSON file: " + filePath);
+                }
             }
+
+            return new WortTrainer(); // Return a new instance if the file does not exist or there's an error
         }
 }

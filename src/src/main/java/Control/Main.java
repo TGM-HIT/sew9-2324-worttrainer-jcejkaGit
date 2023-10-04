@@ -18,7 +18,7 @@ public class Main {
         String defaultSavesPath = "C:\\Users\\jurij\\OneDrive\\Dokumente\\Jurij-tgm\\SEW\\SEW5-WiSe\\WortTrainer-Sew5\\src\\src\\main\\persistenceSaves\\saves.json";
         Persistence jsonPersistence = new JsonPersistence();
         WortTrainer trainer = null;
-        if(jsonPersistence.load(defaultSavesPath) == null ){
+      //  if(jsonPersistence.load(defaultSavesPath) == null ){
             ArrayList<WortEintrag> liste = new ArrayList<>();
             String[] imgNames = {"Katze","Email","Hund","Glas","Rucksack"};
             String[] linkList ={
@@ -36,16 +36,16 @@ public class Main {
                 System.out.println(liste.get(i).toString());
             }
             trainer = new WortTrainer(liste,jsonPersistence);
-        }else{
-            trainer = jsonPersistence.load(defaultSavesPath);
-        }
+//        }else{
+//            trainer = jsonPersistence.load(defaultSavesPath);
+//        }
 
 
         for(int i =0;i<5;i++){
             trainer.chooseWorteintrag(i);
             int counter=i+1;
             System.out.println("Help");
-            trainer.saveData("C:\\Users\\jurij\\OneDrive\\Dokumente\\Jurij-tgm\\SEW\\SEW5-WiSe\\WortTrainer-Sew5\\src\\src\\main\\persistenceSaves\\saves.json");
+            trainer.saveData("C:\\Users\\jurij\\OneDrive\\Dokumente\\Jurij-tgm\\SEW\\SEW5-WiSe\\WortTrainer-Sew5\\src\\src\\main\\persistenceSaves\\saves1.json");
             String userGuess = ImageLoader.loadImageAndDisplay(trainer.getAktPaar().getUrl(),"bild"+counter);
             System.out.println("Help2");
             if(trainer.checkIgnoreCase(userGuess)){
