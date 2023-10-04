@@ -16,6 +16,10 @@ public class WortEintrag {
         setWort(wort);
         setUrl(url);
     }
+    public WortEintrag() {
+        setWort("Dog");
+        setUrl("https://img.freepik.com/free-vector/beagle-dog-cartoon-white-background_1308-75491.jpg?w=200");
+    }
     /**
      * prüft ob die url den Anforderungen entspricht
      * @param url

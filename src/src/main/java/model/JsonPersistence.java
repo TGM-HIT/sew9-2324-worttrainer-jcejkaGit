@@ -17,4 +17,16 @@ import java.io.IOException;
             System.err.println("Error saving data to JSON file: " + filePath);
         }
     }
+        public WortTrainer load(String filePath) {
+            ObjectMapper objectMapper = new ObjectMapper();
+            try {
+                System.out.println("Data loaded from JSON file: " + filePath);
+                return objectMapper.readValue(new File(filePath), WortTrainer.class);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.err.println("Error loading data from JSON file: " + filePath);
+                return null; // Handle the error or return a default WordTrainer
+            }
+        }
 }
