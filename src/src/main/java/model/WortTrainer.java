@@ -9,11 +9,23 @@ public class WortTrainer {
     private int trueGuess;
     private int falseGuess;
     private WortEintrag aktPaar;
+    private Persistence persistenceStrategy;
+    public void setPersistenceStrategy(Persistence persistenceStrategy) {
+        this.persistenceStrategy = persistenceStrategy;
+    }
+    public void saveData(String filePath) {
+        if (persistenceStrategy != null) {
+            persistenceStrategy.save(this, filePath);
+        } else {
+            System.err.println("Persistence strategy not set. Data not saved.");
+        }
+    }
     public WortTrainer() {
         this.liste = new ArrayList<WortEintrag>();
         this.aktPaar = null;
         this.trueGuess = 0;
         this.falseGuess = 0;
+        persistenceStrategy = new JsonPersistence();
     }
 
     /**
@@ -21,11 +33,12 @@ public class WortTrainer {
      *
      * @param liste Liste wird zum verarbeiten übergeben
      */
-    public WortTrainer(List<WortEintrag> liste) {
+    public WortTrainer(List<WortEintrag> liste, Persistence persistenceStrategy) {
         this.liste = liste;
         this.aktPaar = null;
         this.trueGuess = 0;
         this.falseGuess = 0;
+        this.persistenceStrategy = persistenceStrategy;
     }
     public WortEintrag getAktPaar(){
         if(this.aktPaar != null)
@@ -99,7 +112,7 @@ public class WortTrainer {
     }
 
     public String printStatistik() {
-        return "Es wurde insgesamt" + this.trueGuess + " mal richtig und " + this.falseGuess + " mal falsch geraten!";
+        return "Es wurde insgesamt " + this.trueGuess + " mal richtig und " + this.falseGuess + " mal falsch geraten!";
     }
 
 }

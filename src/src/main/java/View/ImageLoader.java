@@ -10,6 +10,7 @@ import java.net.URL;
 public class ImageLoader {
 
     public static String loadImageAndDisplay(String imageUrl, String dialogTitle) {
+
         String guess = "";
         try {
             // Create a URL object
@@ -68,6 +69,23 @@ public class ImageLoader {
                 JOptionPane.ERROR_MESSAGE
         );
     }
+    public static void displayMessage(String message,boolean success) {
+        if(success){
+            JOptionPane.showMessageDialog(
+                    null,
+                    message,
+                    "Richtig",
+                    JOptionPane.INFORMATION_MESSAGE
+            );
+        }else{
+            JOptionPane.showMessageDialog(
+                    null,
+                    message,
+                    "Falsch",
+                    JOptionPane.ERROR_MESSAGE
+            );
+        }
 
+    }
 
 }

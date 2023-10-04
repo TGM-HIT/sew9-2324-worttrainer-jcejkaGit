@@ -9,6 +9,10 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import View.ImageLoader;
 import model.*;
+
+import static View.ImageLoader.displayMessage;
+
+
 public class Main {
     public static void main(String[] args) {
         ArrayList<WortEintrag> liste = new ArrayList<>();
@@ -27,16 +31,23 @@ public class Main {
             liste.add(new WortEintrag(imgNames[i],linkList[i]+width));
             System.out.println(liste.get(i).toString());
         }
-        WortTrainer trainer = new WortTrainer(liste);
+        WortTrainer trainer = new WortTrainer(liste,new JsonPersistence());
 
         for(int i =0;i<5;i++){
             trainer.chooseWorteintrag(i);
             int counter=i+1;
+            System.out.println("Help");
+            trainer.saveData("C:\\Users\\jurij\\OneDrive\\Dokumente\\Jurij-tgm\\SEW\\SEW5-WiSe\\WortTrainer-Sew5\\src\\src\\main\\persistenceSaves\\saves.json");
             String userGuess = ImageLoader.loadImageAndDisplay(trainer.getAktPaar().getUrl(),"bild"+counter);
-            if(trainer.check(userGuess)){
-                System.out.println("Erfolg");
+            System.out.println("Help2");
+            if(trainer.checkIgnoreCase(userGuess)){
+                displayMessage("Gut geraten",true);
+            }
+            else{
+                displayMessage("Leider nicht richtig :(",false);
             }
 
         }
+        displayMessage(trainer.printStatistik(),true);
     }
 }
