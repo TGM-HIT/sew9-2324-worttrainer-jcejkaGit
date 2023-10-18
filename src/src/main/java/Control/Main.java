@@ -15,10 +15,10 @@ import static View.ImageLoader.displayMessage;
 
 public class Main {
     public static void main(String[] args) {
-        String defaultSavesPath = "C:\\Users\\jurij\\OneDrive\\Dokumente\\Jurij-tgm\\SEW\\SEW5-WiSe\\WortTrainer-Sew5\\src\\src\\main\\persistenceSaves\\saves.json";
+        String defaultSavesPath = "C:\\Users\\jurij\\OneDrive\\Dokumente\\Jurij-tgm\\SEW\\SEW5-WiSe\\WortTrainer-Sew5\\src\\src\\main\\persistenceSaves\\saves1.json";
         Persistence jsonPersistence = new JsonPersistence();
         WortTrainer trainer = null;
-      //  if(jsonPersistence.load(defaultSavesPath) == null ){
+      if(jsonPersistence.load(defaultSavesPath) == null ){
             ArrayList<WortEintrag> liste = new ArrayList<>();
             String[] imgNames = {"Katze","Email","Hund","Glas","Rucksack"};
             String[] linkList ={
@@ -36,16 +36,16 @@ public class Main {
                 System.out.println(liste.get(i).toString());
             }
             trainer = new WortTrainer(liste,jsonPersistence);
-//        }else{
-//            trainer = jsonPersistence.load(defaultSavesPath);
-//        }
+      }else{
+            trainer = jsonPersistence.load(defaultSavesPath);
+      }
 
 
         for(int i =0;i<5;i++){
             trainer.chooseWorteintrag(i);
             int counter=i+1;
             System.out.println("Help");
-            trainer.saveData("C:\\Users\\jurij\\OneDrive\\Dokumente\\Jurij-tgm\\SEW\\SEW5-WiSe\\WortTrainer-Sew5\\src\\src\\main\\persistenceSaves\\saves1.json");
+            trainer.saveData(defaultSavesPath);
             String userGuess = ImageLoader.loadImageAndDisplay(trainer.getAktPaar().getUrl(),"bild"+counter);
             System.out.println("Help2");
             if(trainer.checkIgnoreCase(userGuess)){
@@ -56,6 +56,7 @@ public class Main {
             }
 
         }
+
         displayMessage(trainer.printStatistik(),true);
     }
 }

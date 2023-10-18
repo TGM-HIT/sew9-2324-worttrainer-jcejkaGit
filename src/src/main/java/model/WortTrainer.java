@@ -45,6 +45,17 @@ public class WortTrainer {
             return this.aktPaar;
        throw new IllegalArgumentException("Kein Paar ausgewählt");
     }
+    public List<WortEintrag> getWortListe(){
+        if(this.liste.size() > 0)
+            return this.liste;
+        throw new IllegalArgumentException("Liste ist leer");
+    }
+    public int getTrueGuess(){
+        return this.trueGuess;
+    }
+    public int getFalseGuess(){
+        return this.falseGuess;
+    }
 
     /**
      * Erzeugt eine zufällige Zahl im Bereich des Eintrags Arrays und gibt den Worteintrag dann zurück
