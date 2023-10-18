@@ -9,7 +9,11 @@ import java.io.IOException;
  * Saves and loads from a JSON File and persists current Wordtrainer data after the strategy pattern
  */
 public class JsonPersistence implements Persistence {
-    @Override
+    /**
+     * Writes all Attributes with getter Methods in json file
+     * @param wordTrainer Class that is given to write in json
+     * @param filePath to jsonfile
+     */
     public void save(WortTrainer wordTrainer, String filePath) {
         ObjectMapper objectMapper = new ObjectMapper();
 
@@ -22,6 +26,11 @@ public class JsonPersistence implements Persistence {
         }
     }
 
+    /**
+     * Reads from JSON file and turns it into Wordtrainer class
+     * @param filePath to readable json
+     * @return generated WortTrainer object
+     */
     public WortTrainer load(String filePath) {
         ObjectMapper objectMapper = new ObjectMapper();
         File file = new File(filePath);

@@ -12,20 +12,24 @@ public class WortEintrag {
     private String url;
     /**
      * Initializes the Attributes
-     * @param wort
-     * @param url
+     * @param wort Word that is the right guess
+     * @param url Url of the image that should be displayed
      */
     public WortEintrag(String wort, String url) {
         setWort(wort);
         setUrl(url);
     }
+
+    /**
+     * Sets a default hardcoded Value
+     */
     public WortEintrag() {
         setWort("Dog");
         setUrl("https://img.freepik.com/free-vector/beagle-dog-cartoon-white-background_1308-75491.jpg?w=200");
     }
     /**
      * checks if the url meets the requirements
-     *@param url
+     *@param url Url of the image that should be displayed
      * @return if matches requirements true
      */
     public static boolean checkURL(String url) {
@@ -36,17 +40,17 @@ public class WortEintrag {
 
 
     /**
-     * gibt wort zurück
-     * @return
+     * @return word of the Entry
      */
     public String getWort() {
         return this.wort;
     }
     /**
      * Überprüft wort ob es mind 2 Buchstaben hat, wenn nicht dann wird eine exception geworfen
-     * @param wort
-     * @throws IllegalArgumentException
+     * @param wort sets word
+     * @throws IllegalArgumentException if word contains less than 2 Letters
      */
+    //
     public void setWort(String wort) throws IllegalArgumentException{
         if(checkWort(wort)) {
             this.wort = wort;
@@ -58,9 +62,9 @@ public class WortEintrag {
 
     }
     /**
-     * Überprüft wort ob es mind 2 Buchstaben hat
-     * @param wort
-     * @return wenn nicht dann false
+     * Checks if word has more than 2 letters
+     * @param wort that is checked
+     * @return false when less than 2 letters
      */
     public boolean checkWort(String wort) {
         int trueLetter = 0;
@@ -79,15 +83,15 @@ public class WortEintrag {
         return proof;
     }
     /**
-     * gibt url Attribut zurück
+     * gives back URL of entry
      * @return url
      */
     public String getUrl() {
         return this.url;
     }
     /**
-     * Überprüft ob Url den Anforderungen enstpricht
-     * @param url
+     * Sets URL
+     * @param url that is set
      */
     public void setUrl(String url) {
         if(WortEintrag.checkURL(url)) {
@@ -100,7 +104,7 @@ public class WortEintrag {
         }
     }
     /**
-     * Überschreibt toString so wort;url
+     * Overrides toString to wort;url
      */
     @Override
     public String toString() {
