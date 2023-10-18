@@ -10,6 +10,9 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+/**
+ * Class that is used in ImageLoader to create custom Dialog window from JOPtionPane
+ */
 public class CustomImageDialog extends JDialog {
     private JTextField textField;
     private boolean confirmed;

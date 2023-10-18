@@ -11,7 +11,7 @@ public class WortEintrag {
     @JsonProperty("url")
     private String url;
     /**
-     * Initialisiert die Attribute
+     * Initializes the Attributes
      * @param wort
      * @param url
      */
@@ -24,9 +24,9 @@ public class WortEintrag {
         setUrl("https://img.freepik.com/free-vector/beagle-dog-cartoon-white-background_1308-75491.jpg?w=200");
     }
     /**
-     * prüft ob die url den Anforderungen entspricht
-     * @param url
-     * @return wenn Anforderungen enstpricht true
+     * checks if the url meets the requirements
+     *@param url
+     * @return if matches requirements true
      */
     public static boolean checkURL(String url) {
         Pattern pattern = Pattern.compile(URL_REGEX);

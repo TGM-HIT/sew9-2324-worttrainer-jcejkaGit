@@ -29,9 +29,9 @@ public class WortTrainer {
     }
 
     /**
-     * Initialisiert Attribute
+     * Initialised attributes
      *
-     * @param liste Liste wird zum verarbeiten übergeben
+     * @param liste List is passed for processing
      */
     public WortTrainer(List<WortEintrag> liste, Persistence persistenceStrategy) {
         this.liste = liste;
@@ -58,9 +58,8 @@ public class WortTrainer {
     }
 
     /**
-     * Erzeugt eine zufällige Zahl im Bereich des Eintrags Arrays und gibt den Worteintrag dann zurück
-     *
-     * @return WortEintrag dem zufälligem Index nach
+     * Creates a random number in the range of the entry array and then returns the word entry
+     * @return word entry to random index
      */
     public WortEintrag guessWorteintrag() {
         Random gen = new Random();
@@ -78,8 +77,7 @@ public class WortTrainer {
     }
 
     /**
-     * Überprüft ob das übergebene wort mit dem des aktuellen Worteintrags übereinstimmt
-     *
+     * Checks whether the word passed matches that of the current word entry.
      * @param wort
      * @return true wenn es übereinstimmt
      */
@@ -94,8 +92,8 @@ public class WortTrainer {
     }
 
     /**
-     * Überprüft ob das übergebene wort mit dem des aktuellen Worteintrags
-     * übereinstimmt, ignoriert aber groß und kleinschreibung
+     * Checks whether the word passed matches that of the current word entry. matches,
+     * but ignores upper and lower case letters
      *
      * @param wort
      * @return true wenn es übereinstimmt
@@ -114,7 +112,7 @@ public class WortTrainer {
     }
 
     /**
-     * ändert die statistik
+     * changes the statistic
      *
      * @param erraten
      */
@@ -125,6 +123,10 @@ public class WortTrainer {
             this.falseGuess++;
     }
 
+    /**
+     * Formated Sentence that displays current Statistic
+     * @return
+     */
     public String printStatistik() {
         return "Es wurde insgesamt " + this.trueGuess + " mal richtig und " + this.falseGuess + " mal falsch geraten!";
     }

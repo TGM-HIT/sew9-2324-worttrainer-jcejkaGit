@@ -8,7 +8,12 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class ImageLoader {
-
+    /**
+     * Method to display imageUrl from The Web
+     * @param imageUrl the url that is displayyed from the web
+     * @param dialogTitle Title that is displayed while generating
+     * @return
+     */
     public static String loadImageAndDisplay(String imageUrl, String dialogTitle) {
 
         String guess = "";

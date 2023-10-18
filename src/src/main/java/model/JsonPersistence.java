@@ -5,6 +5,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * Saves and loads from a JSON File and persists current Wordtrainer data after the strategy pattern
+ */
 public class JsonPersistence implements Persistence {
     @Override
     public void save(WortTrainer wordTrainer, String filePath) {

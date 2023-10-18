@@ -15,9 +15,12 @@ import static View.ImageLoader.displayMessage;
 
 public class Main {
     public static void main(String[] args) {
+        //genrates Hardcoded path
         String defaultSavesPath = "C:\\Users\\jurij\\OneDrive\\Dokumente\\Jurij-tgm\\SEW\\SEW5-WiSe\\WortTrainer-Sew5\\src\\src\\main\\persistenceSaves\\saves1.json";
+        //prepares JSON Persistance
         Persistence jsonPersistence = new JsonPersistence();
         WortTrainer trainer = null;
+        //if the file is empty a new Trainer is generated with a new list
       if(jsonPersistence.load(defaultSavesPath) == null ){
             ArrayList<WortEintrag> liste = new ArrayList<>();
             String[] imgNames = {"Katze","Email","Hund","Glas","Rucksack"};
@@ -37,17 +40,16 @@ public class Main {
             }
             trainer = new WortTrainer(liste,jsonPersistence);
       }else{
+          // if the file is readable is loads the file into trainer
             trainer = jsonPersistence.load(defaultSavesPath);
       }
 
-
-        for(int i =0;i<5;i++){
+        //cycles trough all entrys and displays it
+        for(int i =0;i<trainer.getWortListe().size();i++){
             trainer.chooseWorteintrag(i);
             int counter=i+1;
-            System.out.println("Help");
             trainer.saveData(defaultSavesPath);
             String userGuess = ImageLoader.loadImageAndDisplay(trainer.getAktPaar().getUrl(),"bild"+counter);
-            System.out.println("Help2");
             if(trainer.checkIgnoreCase(userGuess)){
                 displayMessage("Gut geraten",true);
             }
@@ -56,7 +58,7 @@ public class Main {
             }
 
         }
-
+        //Displays Statistic in the end
         displayMessage(trainer.printStatistik(),true);
     }
 }
