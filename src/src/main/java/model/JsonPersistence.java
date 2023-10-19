@@ -7,6 +7,8 @@ import java.io.IOException;
 
 /**
  * Saves and loads from a JSON File and persists current Wordtrainer data after the strategy pattern
+ * @author jurij
+ * @version 18-10-2023
  */
 public class JsonPersistence implements Persistence {
     /**

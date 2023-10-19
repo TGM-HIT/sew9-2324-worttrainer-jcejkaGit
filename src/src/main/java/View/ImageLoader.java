@@ -7,6 +7,11 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+/**
+ * This class provides functionality for displaying images from a url in custom JOptionPaneMessageDialog
+ * @author jurij
+ * @version 18-10-2023
+ */
 public class ImageLoader {
     /**
      * Method to display imageUrl from The Web

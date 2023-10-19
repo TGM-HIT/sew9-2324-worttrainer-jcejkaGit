@@ -14,6 +14,8 @@ import static View.ImageLoader.displayMessage;
 
 /**
  * Cycles through all urls, displays, saves and ,loads them from a JSON
+ * @author jurij
+ * @version 18-10-2023
  */
 public class Main {
     public static void main(String[] args) {

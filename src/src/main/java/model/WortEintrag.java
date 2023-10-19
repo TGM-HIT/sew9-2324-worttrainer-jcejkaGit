@@ -4,6 +4,12 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * WordEntry is Data Structure for WordEntrys that are displayed for a guess
+ * WordTrainer uses this data structure to save word entrys
+ * @author jurij
+ * @version 18-10-2023
+ */
 public class WortEintrag {
     @JsonProperty("wort")
     private String wort;

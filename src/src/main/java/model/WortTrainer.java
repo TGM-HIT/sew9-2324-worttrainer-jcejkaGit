@@ -4,6 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * WordTrainer has a Wordentry list
+ * It provides Functionality for checking adding and saving these entrys
+ * @author jurij
+ * @version 18-10-2023
+ */
 public class WortTrainer {
     private List<WortEintrag> liste;
     private int trueGuess;
