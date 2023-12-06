@@ -25,7 +25,7 @@ public class Main {
         Persistence jsonPersistence = new JsonPersistence();
         WortTrainer trainer = null;
         //if the file is empty a new Trainer is generated with a new list
-      /*if(jsonPersistence.load(defaultSavesPath) == null ){
+      if(jsonPersistence.load(defaultSavesPath) == null ){
             ArrayList<WortEintrag> liste = new ArrayList<>();
             String[] imgNames = {"Katze","Email","Hund","Glas","Rucksack"};
             String[] linkList ={ "https://img.freepik.com/vektoren-kostenlos/handgezeichnete-katzenumrissillustration_23-2149288548.jpg?w=",
@@ -41,7 +41,7 @@ public class Main {
                 liste.add(new WortEintrag(imgNames[i],linkList[i]+width)); System.out.println(liste.get(i).toString());
             }
             trainer = new WortTrainer(liste,jsonPersistence);
-      }*/
+      }
                // if the file is readable is loads the file into trainer
             trainer = jsonPersistence.load(defaultSavesPath);
 

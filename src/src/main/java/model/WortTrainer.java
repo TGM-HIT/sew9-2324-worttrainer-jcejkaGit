@@ -24,14 +24,17 @@ public class WortTrainer {
      * Saves data with current Presistence strategy
      * @param filePath to savefile location
      */
-    public void saveData(String filePath) {
+    public String saveData(String filePath) {
+        String response="";
         if (persistenceStrategy != null) {
             persistenceStrategy.save(this, filePath);
+            response= "file saved at this filepath:"+filePath;
         } else {
-            System.err.println("Persistence strategy not set. Data not saved.");
+            response ="Persistence strategy not set. Data not saved.";
+            System.err.println(response);
         }
+        return response;
     }
-
     /**
      * Initializes Wordtrainer with empty list and JSONPersistence
      */
