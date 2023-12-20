@@ -19,13 +19,23 @@ public class JsonPersistence implements Persistence {
      */
     public void save(WortTrainer wordTrainer, String filePath) {
         ObjectMapper objectMapper = new ObjectMapper();
-
         try {
-            objectMapper.writeValue(new File(filePath), wordTrainer);
-            System.out.println("Data saved to JSON file: " + filePath);
-        } catch (IOException e) {
+            File saveFile = new File(filePath);
+            if(saveFile.exists()){
+                saveFile.delete();
+            }
+            if (saveFile.createNewFile()) {
+                try {
+                    objectMapper.writeValue(saveFile, wordTrainer);
+                    System.out.println("Data saved to JSON file: " + filePath);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    System.err.println("Error saving data to JSON file: " + filePath);
+                }
+            }
+
+        }catch(IOException e){
             e.printStackTrace();
-            System.err.println("Error saving data to JSON file: " + filePath);
         }
     }
 
@@ -36,13 +46,9 @@ public class JsonPersistence implements Persistence {
      */
     public WortTrainer load(String filePath) {
         ObjectMapper objectMapper = new ObjectMapper();
-
-
-
             try {
-                InputStream inputStream = getClass().getClassLoader().getResourceAsStream(filePath);
-
-                return objectMapper.readValue(inputStream, WortTrainer.class);
+               //InputStream inputStream = getClass().getClassLoader().getResourceAsStream(filePath);
+                return objectMapper.readValue(new File(filePath), WortTrainer.class);
             } catch (IOException e) {
                 e.printStackTrace();
                 System.err.println("Error loading data from JSON file: " + filePath);

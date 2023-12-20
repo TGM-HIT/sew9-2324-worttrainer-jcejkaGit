@@ -1,6 +1,5 @@
 package model;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -29,8 +28,8 @@ class WortTrainerTest {
     @Test
     void testConstructor() {
         assertNotNull(wortTrainer);
-        assertNotNull(wortTrainer.getWortListe());
-        assertEquals(2, wortTrainer.getWortListe().size());
+        assertNotNull(wortTrainer.getListe());
+        assertEquals(2, wortTrainer.getListe().size());
         assertEquals(0, wortTrainer.getTrueGuess());
         assertEquals(0, wortTrainer.getFalseGuess());
         assertNotNull(wortTrainer.getAktPaar());

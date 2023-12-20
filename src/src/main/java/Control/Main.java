@@ -1,12 +1,7 @@
 package Control;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
-import javax.imageio.ImageIO;
+
 import View.ImageLoader;
 import model.*;
 
@@ -20,7 +15,7 @@ import static View.ImageLoader.displayMessage;
 public class Main {
     public static void main(String[] args) {
         //genrates Hardcoded path
-        String defaultSavesPath = "C:\\Users\\jurij\\OneDrive\\Dokumente\\Jurij-tgm\\SEW\\SEW5-WiSe\\WortTrainer-Sew5\\src\\src\\main\\persistenceSaves\\saves1.json";
+        String defaultSavesPath = "C:\\Users\\jurij\\OneDrive\\Dokumente\\Jurij-tgm\\SEW\\SEW5-WiSe\\WortTrainer-Sew5\\src\\src\\main\\persistenceSaves\\saves.json";
         //prepares JSON Persistance
         Persistence jsonPersistence = new JsonPersistence();
         WortTrainer trainer = null;
@@ -43,14 +38,13 @@ public class Main {
             trainer = new WortTrainer(liste,jsonPersistence);
       }
                // if the file is readable is loads the file into trainer
-            trainer = jsonPersistence.load(defaultSavesPath);
+        trainer = jsonPersistence.load(defaultSavesPath);
 
 
         //cycles trough all entrys and displays it
-        for(int i =0;i<trainer.getWortListe().size();i++){
+        for(int i = 0; i<trainer.getListe().size(); i++){
             trainer.chooseWorteintrag(i);
             int counter=i+1;
-            trainer.saveData(defaultSavesPath);
             String userGuess = ImageLoader.loadImageAndDisplay(trainer.getAktPaar().getUrl(),"bild"+counter);
             if(trainer.checkIgnoreCase(userGuess)){
                 displayMessage("Gut geraten",true);
@@ -58,8 +52,8 @@ public class Main {
             else{
                 displayMessage("Leider nicht richtig :(",false);
             }
-
         }
+        trainer.saveData(defaultSavesPath);
         //Displays Statistic in the end
         displayMessage(trainer.printStatistik(),true);
     }

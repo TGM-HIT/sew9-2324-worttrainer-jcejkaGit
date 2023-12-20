@@ -1,5 +1,7 @@
 package model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -11,8 +13,14 @@ import java.util.Random;
  * @version 18-10-2023
  */
 public class WortTrainer {
+    @JsonProperty("liste")
+
     private List<WortEintrag> liste;
+    @JsonProperty("trueGuess")
+
     private int trueGuess;
+    @JsonProperty("falseGuess")
+
     private int falseGuess;
     private WortEintrag aktPaar;
     private Persistence persistenceStrategy;
@@ -68,10 +76,24 @@ public class WortTrainer {
        throw new IllegalArgumentException("Kein Paar ausgewählt");
     }
 
+
+
+    public void setListe(List<WortEintrag> liste) {
+        this.liste = liste;
+    }
+
+    public void setTrueGuess(int trueGuess) {
+        this.trueGuess = trueGuess;
+    }
+
+    public void setFalseGuess(int falseGuess) {
+        this.falseGuess = falseGuess;
+    }
+
     /**
      * @return all entrys
      */
-    public List<WortEintrag> getWortListe(){
+    public List<WortEintrag> getListe(){
         if(this.liste.size() > 0)
             return this.liste;
         throw new IllegalArgumentException("Liste ist leer");

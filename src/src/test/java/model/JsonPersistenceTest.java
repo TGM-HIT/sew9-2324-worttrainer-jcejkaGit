@@ -2,6 +2,7 @@ package model;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -13,7 +14,7 @@ class JsonPersistenceTest {
 
     private JsonPersistence jsonPersistence;
     private WortTrainer originalWortTrainer;
-    private final String filePath = "C:\\Users\\jurij\\OneDrive\\Dokumente\\Jurij-tgm\\SEW\\SEW5-WiSe\\WortTrainer-Sew5\\src\\src\\test\\java\\model\\testJsonFile.json";
+    private final String filePath = "C:\\Users\\jurij\\OneDrive\\Dokumente\\Jurij-tgm\\SEW\\SEW5-WiSe\\WortTrainer-Sew5\\src\\src\\main\\persistenceSaves\\testJsonSaves.json";
 
     @BeforeEach
     void setUp() {
@@ -22,9 +23,10 @@ class JsonPersistenceTest {
     }
 
     @Test
+
     void testSaveAndLoad() {
         // Save the originalWortTrainer to a JSON file
-        System.out.println(originalWortTrainer.saveData(filePath));
+        originalWortTrainer.saveData(filePath);
         // Load the WortTrainer from the saved JSON file
         WortTrainer loadedWortTrainer = jsonPersistence.load(filePath);
 
@@ -36,6 +38,7 @@ class JsonPersistenceTest {
     }
 
     @Test
+
     void testLoadNonExistentFile() {
         // Attempt to load from a non-existent file
         WortTrainer loadedWortTrainer = jsonPersistence.load("nonExistentFile.json");
@@ -54,17 +57,18 @@ class JsonPersistenceTest {
         testListe.add(wortEintrag1);
         testListe.add(wortEintrag2);
         WortTrainer wortTrainer = new WortTrainer(testListe,jsonPersistence);
-
+        wortTrainer.setFalseGuess(3);
+        wortTrainer.setFalseGuess(2);
         return wortTrainer;
     }
 
     // Helper method to compare two WortTrainer instances for equality
     private void assertWortTrainersEqual(WortTrainer expected, WortTrainer actual) {
-        assertEquals(expected.getWortListe().size(), actual.getWortListe().size());
+        assertEquals(expected.getListe().size(), actual.getListe().size());
 
-        for (int i = 0; i < expected.getWortListe().size(); i++) {
-            WortEintrag expectedEntry = expected.getWortListe().get(i);
-            WortEintrag actualEntry = actual.getWortListe().get(i);
+        for (int i = 0; i < expected.getListe().size(); i++) {
+            WortEintrag expectedEntry = expected.getListe().get(i);
+            WortEintrag actualEntry = actual.getListe().get(i);
             assertEquals(expectedEntry.getWort(), actualEntry.getWort());
             assertEquals(expectedEntry.getUrl(), actualEntry.getUrl());
         }
